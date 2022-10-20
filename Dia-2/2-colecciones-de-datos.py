@@ -80,3 +80,84 @@ print(nombre)
 
 nombre.clear()
 print(nombre)
+
+#tuplas, las tuplas son inmutables 
+
+# Tuplas
+# son ordenadas PERO no se pueden modificar (una vez definidas no se puede alterar)
+
+cursos = ('backend', 'frontend')
+mix = (1, 80.2, False, 'Eduardo', (1,2,3))
+
+print(cursos[0])
+
+print(cursos[:1])
+# ni agregar
+# cursos.append('design')
+
+# ni editar
+# cursos[0] = 'mobile'
+
+# ni eliminar
+# del cursos[0]
+
+print(cursos)
+print(len(cursos))
+
+
+# Para mas informacion: https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences
+
+
+
+#Conjunto set 
+#coleccion de datos desorndenada , una vez creada ya no se puede acceder mediante sus posiciones
+
+primos= {1,3,5,7,11,13,17,19}
+estaciones={'verano','otono','primaver','invierno'}
+print(primos)
+print(estaciones)
+#print(primos[0]) no lo va a reconocer
+
+# se puede agregar 
+
+primos.add(23)
+print(primos)
+
+#sepuede eliminar 
+primos.pop()
+print(primos)
+#------------------------
+#Dicicionario
+#coleccion ordenada pero se usa con llaves (no por indice ) y editable , actua algo asi como un json ( key. value)
+
+persona={
+'nombre':'eduardo',
+'apellido':'suarez',
+'correo':'angelsanchezh@gmail.com',
+'telefono':'946589821'
+}
+
+print(persona['nombre'])
+print(persona.get('direccion','no hay'))
+
+#devuelve una lista con todas las llaves
+print(persona.keys())
+
+#devuelve una lista con todos los valores
+
+print(persona.values())
+
+
+persona['nombre']='luis'
+
+persona['direccion']='calle los ruisenores 1070a'
+#persona.get (direccion) = agrega calle los rusisenores 
+print(persona)
+
+#remueve el valro de esa llave  y opcionalemte lo puede almacenar en otra  varible  
+correo_eliminado=persona.pop('correo')
+print(persona)
+print(correo_eliminado)
+
+
+
