@@ -25,3 +25,6 @@ for numero in range(100):
 
 #metodo range , se usa para tener un numero de vuetas al bucle (100), osea 100 numeros o vueltas 
 
+palabra = 'Hola mundo'
+for letra in palabra:
+  print(letra)
