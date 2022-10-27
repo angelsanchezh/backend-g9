@@ -2,7 +2,7 @@
 from email import message
 from flask import Flask, request
 from datetime import datetime
-
+from flask_cors import CORS
 # name, solo muestra si es el archivo principal del proyecto
 #reuqest es tdoa la informaion que que se puede verl del usuario a traves dl body
 #print(__name__)
@@ -35,6 +35,8 @@ usuarios=[{
 app=Flask(__name__)
 
 #el metod run sirve para correr nuestro servidor en odo de desarrollo
+
+CORS(app)
 
 # si declaramos algo depues del metodo run ,este nunca se llamara , por que aca se quedara pegado esperando peticiones del cliente
 # el endponit , es cuando definimos una ruta para que pueda ser accedidia 
@@ -81,7 +83,7 @@ def resgitro():
         
 def listar():
         return{
-                'Los usarios son':usuarios
+                'content':usuarios
             }
 
 app.run(debug=True)

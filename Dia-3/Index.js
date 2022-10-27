@@ -13,7 +13,29 @@ function addUserClick(e) {
     correo: correo.value,
   };
   console.log(data);
-  getUser.click();
+
+  fetch("http://127.0.0.1:5000/registrarse",{
+method : "POST",
+body: JSON.stringify(data),
+headers:{
+  "Content-Type": "application/json",
+},
+
+})   .then((respuesta)=>{
+  console.log("todo bien");
+  return respuesta.json();
+  
+    })
+  
+    .then((resultado)=>{
+      console.log(resultado);
+      
+        })
+    .catch ((error)=>{
+      console.log("error");
+    });
+  
+    getUser.click();
 }
 
 function getUserClick(e) {
@@ -40,6 +62,31 @@ function getUserClick(e) {
   fila.appendChild(columnaApellido);
   console.log(fila);
   usuarios.innerHTML = usuarios.innerHTML + fila.innerHTML;
+
+
+fetch("http://127.0.0.1:5000/listar_usuarios", {
+  method: 'GET', }  )
+
+  .then((respuesta)=>{
+//esto sucedera si todo va bien
+console.log("todo bien");
+return respuesta.json();
+
+  })
+
+  .then((resultado)=>{
+    console.log(resultado.content);
+    resultado.content.forEach((elemento) => {
+      // TODO: realizar el llenado de la tabla con los usuarios devueltos por el backend
+      console.log(elemento);
+    });
+      })
+  .catch ((error)=>{
+    //esto sucedera si hubo un error
+    console.log("error");
+  });
+
+
 }
 
 addUser.addEventListener("click", addUserClick);
