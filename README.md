@@ -8,3 +8,13 @@ markdown tb te da la opcion de usar etiquetas html
 <img src='https://codigo.edu.pe/public/img/codigo-logo.png'>
 
 </p>
+
+
+Cada semana esta en una rama independiente, en la cual se ira detallando a continuación: -
+ Semana 01: <a href="https://github.com/angelsanchezh/backend-g9/tree/semana01">LINK</a> - 
+ Semana 02: <a href="https://github.com/angelsanchezh/backend-g9/tree/semana02">LINK</a> -
+  Semana 03: <a href="https://github.com/ederivero/backend-g9/tree/semana03">LINK</a> - 
+  Semana 04: No hay - Semana 05: No hay - 
+  Semana 06: No hay - Semana 07: No hay -
+   Semana 08: No hay - Semana 09: No hay - 
+   Semana 10: No ha
