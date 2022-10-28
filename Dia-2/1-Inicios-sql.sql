@@ -104,3 +104,15 @@ SELECT nombre FROM alumnos WHERE nombre LIKE '_o%';
 SELECT nombre FROM alumnos WHERE nombre LIKE '%d%u%';
 SELECT nombre FROM alumnos WHERE nombre LIKE '%d_u%';
 
+-- 4. Mostrar todos los alumnos cuyo nombre tenga al menos la letra 'n' 
+-- 5. Mostrar todos los alumnos cuyo segundo digito del documento sea '8'
+ -- 6. Mostrar todos los alumnos cuyo sexo contenga la letra 'i' seguido de una letra cualquiera y luego la letra "o"
+
+ -- 4. Mostrar todos los alumnos cuyo nombre tenga al menos la letra 'n'
+SELECT * FROM alumnos WHERE nombre LIKE '%n%';
+
+-- 5. Mostrar todos los alumnos cuyo segundo digito del documento sea '8'
+SELECT * FROM alumnos WHERE num_documento LIKE '_8%';
+
+-- 6. Mostrar todos los alumnos cuyo sexo contenga la letra 'i' seguido de una letra cualquiera y luego la letra 'o'
+SELECT * FROM alumnos WHERE sexo LIKE '%i_o%';
