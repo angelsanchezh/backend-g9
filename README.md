@@ -4,6 +4,10 @@
 toda la info la encontrars en los links  daso pro el discord
 markdown tb te da la opcion de usar etiquetas html
 
+levantar mysql en mi terminal de mac
+mysql -u root -p  luego hay que poner la clave de la base de datos usurio. root.  pass Ash11061978
+
+
 1- Chequear si tienes instalado Flask  
 pip list , deben aparecer todos los arcchhivos de flask 
 2.-pip install flask ( si es que no tienes instalado flask)
