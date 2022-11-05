@@ -5,8 +5,14 @@ toda la info la encontrars en los links  daso pro el discord
 markdown tb te da la opcion de usar etiquetas html
 
 levantar mysql en mi terminal de mac
-mysql -u root -p  luego hay que poner la clave de la base de datos          usuario root       pass Ash11061978
+mysql -u root -p  luego hay que poner la clave de la base de datos          usuario root       pass 
 
+se usa.  pip freeze    para saber todas las librerias que hemos instalado manualmente 
+
+se usa    pip freeze > requirements.txt  para crear un archivo que lista todas las librerias que hemos usado
+pip install -r requirements.txt   instala todas las librerias con sus versiones indicadas en el archivo 'requirements.txt' que guardamos anteriomente.
+
+pip uninstall -r requirements.txt -y   este comando sirve para desistanlar todas las librerias usadas en el requerimient
 
 1- Chequear si tienes instalado Flask  
 pip list , deben aparecer todos los arcchhivos de flask 
