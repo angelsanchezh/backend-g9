@@ -8,6 +8,7 @@ from flask_restful import Api
 from Models.usuarios import UsuarioModel
 from Models.tareas import TareaModel
 from Controllers.usuarioController import UsuariosController
+from Controllers.pruebaController import PruebaController
 
 load_dotenv()
 
@@ -27,6 +28,7 @@ migrate = Migrate(app,conexion)
 
 
 api.add_resource(UsuariosController,'/usuarios')
+api.add_resource(PruebaController,'/prueba')
 if __name__ == '__main__':
 
     app.run(debug=True)
