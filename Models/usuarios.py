@@ -7,5 +7,5 @@ class UsuarioModel(conexion.Model):
     id= Column(type_=types.Integer, primary_key=True, autoincrement=True , nullable=False)
     nombre= Column(type_=types.String(length=45),nullable=False)
     correo= Column(type_=types.String(length=45), nullable=False,unique=True)
-    telfono= Column(type_=types.String(length=15))
+    telefono= Column(type_=types.String(length=15))
 
