@@ -9,6 +9,8 @@ from Models.usuarios import UsuarioModel
 from Models.tareas import TareaModel
 from Controllers.usuarioController import UsuariosController,UsuarioController
 from Controllers.pruebaController import PruebaController
+from Controllers.tareaController import TareasController ,TareaController
+
 
 load_dotenv()
 
@@ -33,6 +35,8 @@ migrate = Migrate(app,conexion)
 api.add_resource(UsuariosController,'/usuarios')
 api.add_resource(PruebaController,'/prueba')
 api.add_resource(UsuarioController,'/usuario/<int:id>')
+api.add_resource(TareasController,'/tareas')
+api.add_resource(TareaController,'/tarea/<int:usuarioId>')
 
 if __name__ == '__main__':
 
