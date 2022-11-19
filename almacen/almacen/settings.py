@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'gestion'
 ]
 
 MIDDLEWARE = [
@@ -75,8 +76,12 @@ WSGI_APPLICATION = 'almacen.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'almacen', # nombre de la base de datos
+        'USER': 'root', # usuario del servidor
+        'PASSWORD': 'AsH11061978', # password del servidor
+        'PORT': '3306', # puerto del servidor
+        'HOST': 'localhost' # host donde esta alojado el servidor
     }
 }
 
