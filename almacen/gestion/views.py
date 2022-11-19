@@ -1,10 +1,10 @@
 from rest_framework.decorators import api_view
 from  rest_framework.response import Response
 from rest_framework.request import Request
-from rest_framework.generics import ListAPIView,ListCreateAPIView
-from .serializer import PruebaSerializer
+from rest_framework.generics import ListAPIView,ListCreateAPIView,RetrieveUpdateDestroyAPIView
+from .serializer import PruebaSerializer,DepartamentoSerializer
 from rest_framework import status
-
+from .models import DepartamentoModel
 
 # request > es la información que me llega desde el cliente
 @api_view(http_method_names=['GET', 'POST'])
@@ -75,5 +75,22 @@ class PruebaApiView(ListCreateAPIView):
           return Response(data={
             "message":"usuario agregado exitosamente"
           },status= status.HTTP_201_CREATED)
+
+class DepartamentosApiView(ListCreateAPIView):
+      serializer_class = DepartamentoSerializer
+
+      queryset = DepartamentoModel.objects.all()
+
+
+class DepartamentoApiview(RetrieveUpdateDestroyAPIView):
+      serializer_class = DepartamentoSerializer
+
+      queryset = DepartamentoModel.objects.all()
+
+
+
+
+
+      
 
   
