@@ -1,4 +1,4 @@
-from rest_framework.generics import CreateAPIView, ListCreateAPIView
+from rest_framework.generics import CreateAPIView, ListCreateAPIView,UpdateAPIView
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework import status
@@ -52,8 +52,42 @@ class PlatosApiView(ListCreateAPIView):
 
         })
 
-        def get(self, request:Request):
-            pass
+    def get(self, request:Request):
+            platos = PlatoModel.objects.filter(disponibilidad=True).all()
+
+            platosSerializados =  self.serializer_class(instance=platos,many=True)
+
+            return Response(data={
+                'message': 'los platos son',
+                'content': platosSerializados.data
+
+            })
+
+class PlatoToggleApiView(UpdateAPIView):
+    queryset = PlatoModel.objects.all()
+
+    serializer_class= PlatoSerializer
+    def put(self,request:Request,id):
+
+        PlatoEncontrado = PlatoModel.objects.filter(id=id).first()
+        if PlatoEncontrado is None :
+            return Response (data={
+                'message': 'plato encontrado'
+            },status=status.HTTP_404_NOT_FOUND)
+
+        PlatoEncontrado.disponibilidad = not PlatoEncontrado.disponibilidad
+
+        PlatoEncontrado.save()
+
+        return Response(data={
+            'message' :'plato actualizado exitosamente',
+            'content': self.serializer_class(instance=PlatoEncontrado).data
+        },status=status.HTTP_201_CREATED ) 
+
+class PlatoUpdateApiView(UpdateAPIView):
+    queryset= PlatoModel.objects.all()
+    serializer_class=PlatoSerializer
+
 
 
 
