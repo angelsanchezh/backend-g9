@@ -34,7 +34,7 @@ class UsuarioModel(AbstractBaseUser,PermissionsMixin):
 
     createAt = models.DateTimeField(auto_now_add=True,db_column='create_at')
 
-    objetcs = UsuarioManager()
+    objects = UsuarioManager()
 
     USERNAME_FIELD  ='correo'
 

@@ -1,16 +1,26 @@
-from rest_framework.generics import CreateAPIView, ListCreateAPIView,UpdateAPIView
+from rest_framework.generics import CreateAPIView, ListCreateAPIView,UpdateAPIView,ListAPIView
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework import status
 from .models import UsuarioModel,PlatoModel
 from .serializers import UsuarioSerializer, PlatoSerializer
+from rest_framework.permissions import IsAuthenticated , IsAuthenticatedOrReadOnly
+from rest_framework_simplejwt.authentication import JWTAuthentication
+#IsAuthenticated > Solamente verifica que en la peticion este enviando una token valida 
+# # IsAuthenticatedOrReadOnly > Solamente para los metodos QUE NO SEAN GET pedira una token valida 
+# # IsAdminUser > Verifica que el usuario de la token sea un usuario administrador (is_superuser = True) 
+# # AllowAny > Permite el libre acceso a todo el mundo
+
+from rest_framework.permissions import IsAuthenticated
+
+from .permissions import SoloAdmin
 
 
 # Create your views here.
 
 class RegistroUsuarioApiView(CreateAPIView):
 
-    queryset = UsuarioModel.objetcs.all()
+    queryset = UsuarioModel.objects.all()
     serializer_class = UsuarioSerializer
 
     def post(self,request: Request):
@@ -39,6 +49,7 @@ class PlatosApiView(ListCreateAPIView):
 
     queryset= PlatoModel.objects.all()
     serializer_class = PlatoSerializer
+    permission_classes=[IsAuthenticatedOrReadOnly]
 
     def post (self,request:Request):
         data = self.serializer_class(data=request.data)
@@ -67,6 +78,8 @@ class PlatoToggleApiView(UpdateAPIView):
     queryset = PlatoModel.objects.all()
 
     serializer_class= PlatoSerializer
+    permission_classes= [IsAuthenticated]
+
     def put(self,request:Request,id):
 
         PlatoEncontrado = PlatoModel.objects.filter(id=id).first()
@@ -87,8 +100,35 @@ class PlatoToggleApiView(UpdateAPIView):
 class PlatoUpdateApiView(UpdateAPIView):
     queryset= PlatoModel.objects.all()
     serializer_class=PlatoSerializer
+    permission_classes= [IsAuthenticated]
 
 
+class VistaProtegidaPlatosApiView(ListAPIView):
+    queryset=PlatoModel.objects.all()
+    serializer_class= PlatoSerializer
+
+    authentication_classes = [JWTAuthentication]
+
+    permission_classes = [SoloAdmin]
+
+    def get(self,request:Request):
+
+        #request.auth > me devolverla lo que se esta utilizando para la autenticacion (la JWT)
+        print('el auth es:', request.auth)
+
+        #request.user > una vez que ya comprobo que el usuario existe y la token es correcta, ahora en el request.user se almacenara el usuario que esta utilizando esa token (gracias al parametro 'USER_ID_CLAIM')
+
+        print('eluser es:',request.user)
+
+
+        return Response(data={
+            'message' : 'hola',
+            'usuario':{
+                    'id':request.user.id,
+                    'correo':request.user.correo
+            }
+
+        } )
 
 
 
