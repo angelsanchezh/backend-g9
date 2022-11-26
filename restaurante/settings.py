@@ -43,9 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gestion',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -149,5 +151,5 @@ SIMPLE_JWT={
     'USER_ID_CLAIM': 'id_del_usuario'
 
 }
-
+CORS_ALLOWED_ORIGINS= [ 'http://127.0.0.1:5500', 'https://www.google.com' ]
 

@@ -1,5 +1,6 @@
 from rest_framework.permissions import BasePermission, SAFE_METHODS
 from rest_framework.request import Request
+from django.contrib.auth.models import AnonymousUser
 
 
 class SoloAdmin(BasePermission):
@@ -14,8 +15,9 @@ class SoloAdmin(BasePermission):
         if request.method in SAFE_METHODS:
             return True
 
-        print(request.user)
-        print(view)
+        if  isinstance(request.user , AnonymousUser):
+            return False
+
         if request.user.tipoUsuario  == 'ADMIN':
             return  True
         else:
