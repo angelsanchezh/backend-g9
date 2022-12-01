@@ -1,0 +1,40 @@
+USE restaurantes;
+
+-- SE USA LA PALABRA DELMITER QUE SIREV PARA INDICAR 
+-- TDODO SERA PARTE DEL COMANDO 
+DELIMITER //
+CREATE PROCEDURE devolverTodosLosUsarios()
+BEGIN
+	SELECT * FROM usuarios;
+
+	-- EL PROCEDIENTO ALMANECADO (store procedure) sirve para realizar un conjunto de operaciones
+	-- INSERT INTO PLATOS(ETC)
+    
+END //
+
+DELIMITER ;
+
+-- AHORA CON SP CON PARAMETROS
+-- EN ESTE CASO DECLARAMOS UN PARAMETRO DE ENTRADA (IN) Y A SU VEZ LE PONEMOS UN OMBRE AL DELIMITADOR
+-- SI QUEREMOS IN DICAR UN PARAMETRO DE SALIDA
+
+DROP PROCEDURE DevolverUsuarioSegunTipo;
+
+DELIMITER //
+CREATE PROCEDURE DevolverUsuarioSegunTipo (IN tipo varchar(40),OUT usuarioID INT)
+
+BEGIN
+    -- FUNCIONES DE AGREGACION (COUNT , SUM , AVRG, MAX, MIN)
+    -- COUNT > CONTABILICE CUANTOS USUARIOS HAY DE ESTOS TIPOS 
+    SELECT COUNT(id) INTO usuarioID FROM usuarios WHERE tipo_usuario = tipo;
+END // 
+
+DELIMITER ;
+
+CALL DevolverTodosLosUsarios();
+CALL DevolverUsuarioSegunTipo('ADMIN',@usuarioID);
+SELECT @usuarioID;
+
+CALL DevolverUsuarioSegunTipo('USER',@usuarioUser);
+SELECT @usuarioUser;
+

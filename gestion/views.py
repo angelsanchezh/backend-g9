@@ -6,6 +6,8 @@ from .models import UsuarioModel,PlatoModel
 from .serializers import UsuarioSerializer, PlatoSerializer
 from rest_framework.permissions import IsAuthenticated , IsAuthenticatedOrReadOnly
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.decorators import api_view
+
 #IsAuthenticated > Solamente verifica que en la peticion este enviando una token valida 
 # # IsAuthenticatedOrReadOnly > Solamente para los metodos QUE NO SEAN GET pedira una token valida 
 # # IsAdminUser > Verifica que el usuario de la token sea un usuario administrador (is_superuser = True) 
@@ -14,6 +16,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 from .permissions import SoloAdmin
+from django.db import connection
 
 
 # Create your views here.
@@ -130,6 +133,27 @@ class VistaProtegidaPlatosApiView(ListAPIView):
             }
 
         } )
+
+@api_view (http_method_names=['GET'])
+def mostrar_usuario_raw(request):
+    with connection.cursor()as cursor:
+
+        cursor.execute('CALL DevolverTodosLosUsarios()')
+        resultado = cursor.fetchall()
+        print(resultado)
+        for usuario in resultado:
+            print(usuario[3])
+
+        cursor.execute("CALL DevolverUsuarioSegunTipo('ADMIN',@usuarioID)")
+        cursor.execute('SELECT @usuarioID')
+
+        resultado2= cursor.fetchone()
+        print(resultado2)
+
+
+        return Response(data={
+            'message': 'procedimiento alamacenado exitosamente'
+        })
 
 
 
