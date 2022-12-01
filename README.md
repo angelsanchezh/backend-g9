@@ -34,6 +34,7 @@ Cada semana esta en una rama independiente, en la cual se ira detallando a conti
   Semana 04: <a href="https://github.com/ederivero/backend-g9/tree/semana04">Link </a>
   Semana 05: <a href="https://github.com/ederivero/backend-g9/tree/semana05">Link </a>
   Semana 06:  <a href="https://github.com/ederivero/backend-g9/tree/semana06">Link </a>
-  Semana 08: 
+  Semana 07:  <a href="https://github.com/ederivero/backend-g9/tree/semana07">Link </a>
+  Semana 08: <a href="https://github.com/ederivero/backend-g9/tree/semana08">Link </a>
   Semana 09: No hay - 
   Semana 10: No ha
