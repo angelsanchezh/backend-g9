@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-e$g#-5#^j$qoo7irnb+!)2kpy-vw&wo#1d8g=t-=vl-5u=9a7y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['restaurante-django-angel.herokuapp.com','localhost','127.0.0.1']
 
 
 # Application definition
