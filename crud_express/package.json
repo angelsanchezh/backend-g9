@@ -4,7 +4,8 @@
   "description": " crud usando express",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "start:dev":"nodemon index.js"
   },
   "keywords": [
     "express",
@@ -14,6 +15,11 @@
   "author": "angel sanchez",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/express": "^4.17.14"
   }
 }
