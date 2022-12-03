@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Producto {
+  id             Int             @id @default(autoincrement())
+  nombre         String          @db.VarChar(50)
+  precio         Float
+  disponibilidad Boolean          @default(true)
+  cantidad       Int
+  detalles       DetallePedido[]
+
+  @@map("productos")
+}
+
+model Cliente {
+  id              Int              @id @default(autoincrement())
+  nombre          String           @db.VarChar(50)
+  apellido        String?          @db.VarChar(50)
+  dni             String           @unique @db.VarChar(8)
+  correo          String
+  createAt        DateTime         @default(now()) @map("create_at")
+  cabecerapedidos CabeceraPedido[]
+
+  @@map("clientes")
+}
+
+model CabeceraPedido {
+  id             Int      @id @default(autoincrement())
+  clienteId      Int      @map("cliente_Id")
+  fechaDeEmision DateTime @map("fecha_emision")
+
+  cliente  Cliente         @relation(fields: [clienteId], references: [id])
+  detalles DetallePedido[]
+
+  @@map("Cabecera_pedidos")
+}
+
+model DetallePedido {
+  id         Int   @id @default(autoincrement())
+  productoId Int   @map("producto_id")
+  cantidad   Int
+  valorVenta Float @map("valor_venta")
+  pedidoId   Int   @map("pedido_id")
+
+  producto Producto       @relation(fields: [productoId], references: [id])
+  pedido   CabeceraPedido @relation(fields: [pedidoId], references: [id])
+
+  @@map("detalle_pedidos")
+}

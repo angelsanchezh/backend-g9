@@ -2,3 +2,5 @@ npm init   > genera un formulario   para crear el archivo package json
 npm install  package  > instala la libreri ane us version mas reciente 
 npm uninstall  package  > desisntala la libreria y la retrira de sus dependencias 
 npm run comando  >  ejecuta  elcomando registroad en ka seccion e script 
+
+npx cli  > podre utilizar el cli de la librerai a que he istalado
