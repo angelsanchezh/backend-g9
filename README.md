@@ -47,13 +47,33 @@ django-admin startproject (nombredel poryecto) .     se escribe con un espacio y
 python3.10 manage.py runserver     para mac
 python manage.py runserver      para windows 
 
+6 empezar creando una aplicacion 
 
+python manage.py startapp (nombre de la apliacion)     para windows
+python3.10  manage.py startapp (nombre de la apliacion)  para mac
 
+7 ahora toca resgistrar tu apliccion dentro de settings de django
 
+dentro de la carpeta settings  buscar la linea que tenga las aplicaciones que usa por defecto django
+INSTALLED_APPS  en la ultima linea agregar el nombre de tu aplicacion de esta forma      '(nombre de tu aplicicion)'
 
+8 no olvides crear tu archivo .gitignore  con al finalidad de que no subas a tu repositorio , archvivos que pesan mucho , dependencias, claves o archivos innecesarios
+  tambien no olvides crear e instalar tu dependencias ccon un archivo que hs creado de requirements.txt , fijate tambien el interpret que estas usando , y que hayas levantado o activado tu entorno.
+  
+9  para empezar a mostrar algo, 
+primero dentro de tu carpeta del aplicativo ingresa a la carpeta VIEWS importa      from django.http import HttpResponse
+ahoravamos a declarar un funcion 
+ejemplo
 
-
-
+  def inicio(request):
+      return HttpResponse("Hol , bienvenido)
+      
+ Luego dentro de la carpeta de tu aplicativo tienes que crear el archivo      urls.py    dentro vamosa imoprtar   from django.urls import path
+ from . import  views (para saber que que vistas vamos a ingresar ) , luego   escribir  
+ urlpatterns = [ 
+      path('',views.nombre de la funcion de creaste en la carpet views,name='un nombre que le pongas ') ]
+ 
+ por ultimote tienes que ir a las urls del mismo sistema importar    from django.urls import include  y por utlimo especificar dentro de su propio urlspatterns la rta que vas a mostrar   path('',include('gestionVeterinaria.urls')),
 
 
 <p aling="center" >
