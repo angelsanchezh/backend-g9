@@ -21,6 +21,41 @@ pip list , deben aparecer todos los arcchhivos de flask
 4.source entorno_flask/bin/activate luego activar  el entonro flask
 5. en algunos casos hay que escoger cual sera el editor 
 
+--------------------------
+trabajando con framework django y python
+
+1  es ideal trabajr dentro de un entorno virtual.
+
+crear entorno virtual con  python3.10 -m venv entorno_flask   , para mac
+py -m venv (nombre del entorno)   , para windows
+
+
+2 activar tu entorno virtual
+  source entorno_flask/bin/activate     ,  para mac
+  source entorno_flask/Scripts/activate   , para windows 
+  
+3 instalar django 
+
+pip install Django   chequea version de django   django-admin --version
+
+4 crear proyecto de django 
+
+django-admin startproject (nombredel poryecto) .     se escribe con un espacio y punto al final para no cree una carpeta adicional de tu nuevo proyecto y lo cree en la misma carpeta inicial.
+
+5 correr el poyecto creado
+
+python3.10 manage.py runserver     para mac
+python manage.py runserver      para windows 
+
+
+
+
+
+
+
+
+
+
 <p aling="center" >
 <img src='https://codigo.edu.pe/public/img/codigo-logo.png'>
 
