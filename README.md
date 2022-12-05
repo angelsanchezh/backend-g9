@@ -73,7 +73,7 @@ ejemplo
  urlpatterns = [ 
       path('',views.nombre de la funcion de creaste en la carpet views,name='un nombre que le pongas ') ]
  
- por ultimote tienes que ir a las urls del mismo sistema importar    from django.urls import include  y por utlimo especificar dentro de su propio urlspatterns la rta que vas a mostrar   path('',include('gestionVeterinaria.urls')),
+ por ultimote tienes que ir a las urls del mismo sistema importar    from django.urls import include  y por utlimo especificar dentro de su propio urlspatterns la rta que vas a mostrar   path('',include('gestionVeterinaria.urls')),   ahora a correrlo   python manage.py runserver , te edebria mostrar elmensaje de bienvenida.
 
 
 <p aling="center" >
