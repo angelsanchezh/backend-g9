@@ -21,6 +21,61 @@ pip list , deben aparecer todos los arcchhivos de flask
 4.source entorno_flask/bin/activate luego activar  el entonro flask
 5. en algunos casos hay que escoger cual sera el editor 
 
+--------------------------
+trabajando con framework django y python
+
+1  es ideal trabajr dentro de un entorno virtual.
+
+crear entorno virtual con  python3.10 -m venv entorno_flask   , para mac
+py -m venv (nombre del entorno)   , para windows
+
+
+2 activar tu entorno virtual
+  source entorno_flask/bin/activate     ,  para mac
+  source entorno_flask/Scripts/activate   , para windows 
+  
+3 instalar django 
+
+pip install Django   chequea version de django   django-admin --version
+
+4 crear proyecto de django 
+
+django-admin startproject (nombredel poryecto) .     se escribe con un espacio y punto al final para no cree una carpeta adicional de tu nuevo proyecto y lo cree en la misma carpeta inicial.
+
+5 correr el poyecto creado
+
+python3.10 manage.py runserver     para mac
+python manage.py runserver      para windows 
+
+6 empezar creando una aplicacion 
+
+python manage.py startapp (nombre de la apliacion)     para windows
+python3.10  manage.py startapp (nombre de la apliacion)  para mac
+
+7 ahora toca resgistrar tu apliccion dentro de settings de django
+
+dentro de la carpeta settings  buscar la linea que tenga las aplicaciones que usa por defecto django
+INSTALLED_APPS  en la ultima linea agregar el nombre de tu aplicacion de esta forma      '(nombre de tu aplicicion)'
+
+8 no olvides crear tu archivo .gitignore  con al finalidad de que no subas a tu repositorio , archvivos que pesan mucho , dependencias, claves o archivos innecesarios
+  tambien no olvides crear e instalar tu dependencias ccon un archivo que hs creado de requirements.txt , fijate tambien el interpret que estas usando , y que hayas levantado o activado tu entorno.
+  
+9  para empezar a mostrar algo, 
+primero dentro de tu carpeta del aplicativo ingresa a la carpeta VIEWS importa      from django.http import HttpResponse
+ahoravamos a declarar un funcion 
+ejemplo
+
+  def inicio(request):
+      return HttpResponse("Hol , bienvenido)
+      
+ Luego dentro de la carpeta de tu aplicativo tienes que crear el archivo      urls.py    dentro vamosa imoprtar   from django.urls import path
+ from . import  views (para saber que que vistas vamos a ingresar ) , luego   escribir  
+ urlpatterns = [ 
+      path('',views.nombre de la funcion de creaste en la carpet views,name='un nombre que le pongas ') ]
+ 
+ por ultimote tienes que ir a las urls del mismo sistema importar    from django.urls import include  y por utlimo especificar dentro de su propio urlspatterns la rta que vas a mostrar   path('',include('gestionVeterinaria.urls')),   ahora a correrlo   python manage.py runserver , te edebria mostrar elmensaje de bienvenida.
+
+
 <p aling="center" >
 <img src='https://codigo.edu.pe/public/img/codigo-logo.png'>
 
