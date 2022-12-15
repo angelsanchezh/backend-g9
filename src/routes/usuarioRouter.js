@@ -3,4 +3,4 @@ import {registro} from "../controllers/usuarioController.js"
 
 export const usuarioRouter = Router();
 
-usuarioRouter.post("./registro",registro);
+usuarioRouter.post("/registro",registro);
